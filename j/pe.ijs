@@ -172,8 +172,7 @@ NB. https://projecteuler.net/problem=16
 NB. https://projecteuler.net/problem=20
 +/10#.^:_1!100x
 NB. https://projecteuler.net/problem=21
-d=.+/@:(i.#~0=]|~i.)
-+/I.((~:d)*.]=d^:2)"0 i.1e4
++/(#~(2 3$1 0)-:"2[:="1([:+/i.([#~0=|)])^:(<3))"0 i.1e4
 NB. https://projecteuler.net/problem=24
 (#.(<:1e6)A.i.)10
 NB. https://projecteuler.net/problem=48
