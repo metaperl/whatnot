@@ -183,3 +183,5 @@ NB. https://projecteuler.net/problem=40
 */10#.^:_1".(<:10&*^:(<7)1){' '-.~":>:i.1e6
 NB. https://projecteuler.net/problem=48
 _10{.":+/^~x:>:i.1e3
+NB. https://projecteuler.net/problem=54
+>./+/"1]10#.^:_1~.,^/~i.100x
