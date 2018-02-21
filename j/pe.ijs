@@ -175,6 +175,8 @@ NB. https://projecteuler.net/problem=21
 +/(#~(2 3$1 0)-:"2[:="1([:+/i.([#~0=|)])^:(<3))"0 i.1e4
 NB. https://projecteuler.net/problem=24
 (#.(<:1e6)A.i.)10
+NB. https://projecteuler.net/problem=34
++/(#~]=[:+/@:!10#.^:_1])"0]3}.i.1e5
 NB. https://projecteuler.net/problem=40
 */10#.^:_1".(<:10&*^:(<7)1){' '-.~":>:i.1e6
 NB. https://projecteuler.net/problem=48
