@@ -177,7 +177,7 @@ NB. https://projecteuler.net/problem=24
 (#.(<:1e6)A.i.)10
 NB. https://projecteuler.net/problem=29
 #~.,^/~}.>:i.100
-https://projecteuler.net/problem=30
+NB. https://projecteuler.net/problem=30
 +/(#~(=[:+/5^~10#.inv])"0)]2+i.1e6
 NB. https://projecteuler.net/problem=34
 +/(#~]=[:+/@:!10#.^:_1])"0]3}.i.1e5
