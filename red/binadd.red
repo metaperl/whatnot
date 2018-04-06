@@ -41,10 +41,8 @@ add-binary: function [x y][
     o: make binary! length? x
     until [
         x: back x y: back y
-        
         insert o mod i: x/1 + y/1 + c 2 ** 8
         c: i >>> 8
-        
         head? x
     ]
 
