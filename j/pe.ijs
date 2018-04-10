@@ -1,7 +1,7 @@
 NB. https://projecteuler.net/problem=1
 +/I.+./0=3 5|/i.1e3
 NB. https://projecteuler.net/problem=2
-+/4e6(]#~2&|*.>:)($:@<:+$:@-&2)`]@.(<&2)M."0 i.40
++/(#~[:-.2&|)(,[:+/_2&{.)^:(4e6>{:)^:_]1 1
 NB. https://projecteuler.net/problem=3
 {:q:600851475143
 NB. https://projecteuler.net/problem=4
