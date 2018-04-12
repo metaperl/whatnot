@@ -36,7 +36,7 @@ NB. https://projecteuler.net/problem=8
 71636269561882670428252483600823257530420752963450
 )
 NB. https://projecteuler.net/problem=9
-x:*/{.({~[:I.1e3=[:+/|:)(,.+/"1&.:*:)>,{;~i.500
+x:*/{.({~[:I.1e3=+/@:|:)(,.+/"1&.:*:)>,{;~i.500
 NB. https://projecteuler.net/problem=10
 +/(p:^:_1{.p:@i.)2e6
 NB. https://projecteuler.net/problem=11
