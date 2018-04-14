@@ -1,0 +1,1 @@
+-:`([:>:3&*)@.(2&|)^:(1&~:)^:a: NB. https://en.wikipedia.org/wiki/Collatz_conjecture
