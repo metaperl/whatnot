@@ -32,7 +32,7 @@ value: integer!
 node:  [tree | leaf]
 leaf:  ['leaf keep (quote 'leaf)]
 tree:  [
-    'tree keep ('construct) keep ahead collect [
+    'tree keep ('object) keep ahead collect [
         into [
             keep (quote left:) node 
             keep (quote value:) keep value 
