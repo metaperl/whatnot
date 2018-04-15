@@ -16,18 +16,6 @@ input: {
     )
 }
 
-expected: [
-    construct [
-        left: construct [left: 'leaf value: 1 right: 'leaf]
-        value: 2
-        right: construct [
-            left: construct [left: 'leaf value: 3 right: 'leaf]
-            value: 4
-            right: 'leaf
-        ]
-    ]
-]
-
 value: integer!
 node:  [tree | leaf]
 leaf:  ['leaf keep (quote 'leaf)]
@@ -42,6 +30,4 @@ tree:  [
     skip
 ]
 
-actual: parse load input [collect tree]
-
-probe equal? actual expected
+probe parse load input [collect tree]
