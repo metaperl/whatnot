@@ -1,4 +1,3 @@
-
 Red [
     Title:  "Bubble sort"
     Date:   17-Apr-2018
