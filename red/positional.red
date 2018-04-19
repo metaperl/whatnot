@@ -7,7 +7,7 @@ Red [
 
 positional: func [proto [object!]][
     func words-of proto compose/deep/only [
-        make (proto) append copy body-of (proto) reduce [
+        make (proto) append copy (body-of proto) reduce [
             'set (words-of proto) reduce (words-of proto)
         ]  
     ]
