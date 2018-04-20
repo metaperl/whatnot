@@ -6,13 +6,10 @@ Red [
 ]
 
 positional: function [proto [object!]][
-    words: words-of proto
-    body:  body-of  proto
-
-    func words compose/deep/only [
-        object append copy (body) reduce [
-            'set (words) reduce (words)
-        ]  
+    proto: copy/deep proto
+    words: words-of  proto
+    func words compose/only [
+        also (proto) set (proto) reduce (words)
     ]
 ]
 
