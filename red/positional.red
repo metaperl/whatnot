@@ -6,8 +6,7 @@ Red [
 ]
 
 positional: function [proto [object!]][
-    proto: copy/deep proto
-    words: words-of  proto
+    words: words-of proto: copy/deep proto
     func words compose/only [
         also (proto) set (proto) reduce (words)
     ]
