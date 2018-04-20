@@ -5,12 +5,30 @@ Red [
     Link:   https://gitter.im/red/help?at=5ad8f9af6d7e07082b11962e
 ]
 
-positional: function [proto [object!]][
-    words: words-of proto: copy/deep proto
-    func words compose/only [
-        also (proto) set (proto) reduce (words)
+positional: function [
+    prototype [object!] 
+    /typed
+][
+    spec: words: words-of prototype: copy/deep prototype
+
+    if typed [
+        spec: collect [
+            forall words [
+                keep reduce [words/1 to block! type? get words/1]
+            ]
+        ] 
+    ]
+
+    func spec compose/only [
+        also (prototype) set (prototype) reduce (words)
     ]
 ]
 
-make': positional object [a: b: c: 0]
-probe make' -1 0 1
+x: object [a: 'a b: #b c: 42]
+
+probe make':  positional/typed x
+probe make'': positional x
+
+probe make'' 1 2 3
+probe make' 'my #constructor "strongly-typed"
+
