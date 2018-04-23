@@ -6,12 +6,7 @@ Red [
 ]
 
 update: function [object path tweak][
-    path: do compose [
-        to path! head insert 
-            (pick [to make] word? path) block! path 
-            'object
-    ]
-
+    path: head insert copy to path! path 'object
     also object set/any path tweak get/any path
 ]
 
