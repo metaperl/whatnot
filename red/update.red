@@ -1,5 +1,5 @@
 Red [
-    Title:  "Update record with given path and monadic function"
+    Title:  "Update record with a given path and monadic function"
     Date:   23-Apr-2018
     Author: 9214
     Link:   https://gitter.im/red/help?at=5ade12d327c509a774413b12
