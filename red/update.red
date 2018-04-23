@@ -6,7 +6,7 @@ Red [
 ]
 
 update: function [object path tweak][
-    path: head insert copy to path! path 'object
+    path: append to path! 'object to path! path
     also object set/any path tweak get/any path
 ]
 
