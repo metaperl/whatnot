@@ -6,16 +6,16 @@ Red [
 ]
 
 update: function [object path tweak][
-    path: append to path! 'object to path! path
+    path: append to path! object path
     also object set/any path tweak get/any path
 ]
 
 o: object [a: 1 b: object [c: 2]]
 
 foreach [path tweak] reduce [
-    'b/c func [x][x + 1]
-    'a   func [x][x - 1]
-    'b   func [x][42]
+    'b/c [x + 1]
+    'a   [x - 1]
+    'b   [42]
 ][
-    probe update o path :tweak
+    probe update o path func [x] tweak
 ]
