@@ -12,8 +12,8 @@ group: func [
     also list until [
         do/next list 'position
         tail? list: change/part/only 
-            list 
-            to get pick [paren! block!] paren copy/part list position
+            list
+            do skip [to paren! copy/part list position] pick 0x2 paren
             position
     ]
 ]
