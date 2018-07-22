@@ -23,7 +23,7 @@ unwind: function [code [string! block! file! url!] /local match] bind [
 
     forall words [
         index: index? words
-        unless strict-equal? pick before index pick after index [
+        unless same? pick before index pick after index [
             set/any probe words/1 pick before index
         ]
     ]
