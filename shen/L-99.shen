@@ -1,57 +1,97 @@
-\* https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html *\
+\* 99 Lisp problems in Shen
+ * https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html
+ * in case using native functions is cheating, we've rolled out or own in ./base.shen file
+ *\
 
-\* in case usage of native functions is cheating, we roll out our own *\
-(define empty?' X -> (= X []))
-
-(define cons?' [_] -> true _ -> false)
-
-(define append'
-    [] Y -> Y
-    [X | []] Y -> [X | Y]
-    [X | Xs] Y -> [X | (append' Xs Y)])
-
-\\ find the last box of a list
+\\ 01 -- find the last box of a list
 (define last
-    [] -> nil
-    [X | Xs] -> (cases (empty? Xs) X 
-                       true (last Xs)))
+    [] -> []
+    [X | Xs] -> (if (empty? Xs) 
+                    X 
+                    (last Xs)))
 
-\\ find the last but one box of a list
+\\ 02 -- find the last but one box of a list
 (define but-last
-    [] -> nil
-    [X] -> [X]
-    [X Y | Xs] -> (cases (empty? Xs) [X Y] 
-                         true (but-last [Y | Xs])))
+    Xs -> Xs where (or (empty? Xs) (empty? (tail Xs)))
+    [X Y | Xs] -> (if (empty? Xs) 
+                      [X Y]
+                      (but-last [Y | Xs])))
 
-\\ find the K'th element of a list
+\\ 03 -- find the K'th element of a list
 (define kth
-    Xs K -> nil where (or (empty? Xs) (<= K 0))
-    [X | Xs] K -> (cases (> K 1) (kth Xs (- K 1)) 
-                         true X))
+    K Xs -> [] where (or (empty? Xs) (<= K 0))
+    K [X | Xs] -> (if (> K 1) 
+                      (kth (- K 1) Xs) 
+                      X))
 
-\\ find the number of elements of a list
+\\ 04 -- find the number of elements of a list
 (define length?
     [] -> 0
     [X | Xs] -> (+ 1 (length? Xs)))
 
-\\ reverse a list
+\\ 05 -- reverse a list
 (define flip
     [] -> []
     [X | Xs] -> (append (flip Xs) [X]))
 
-\\ find out whether a list is a palindrome
+\\ 06 -- find out whether a list is a palindrome
 (define palindrome? X -> (= X (flip X)))
 
-\\ flatten a nested list structure
+\\ 07 -- flatten a nested list structure
 (define flatten
     [] -> []
-    [X | Xs] -> (let H (cases (or (empty? X) (cons? X)) (flatten X)
-                              true [X])
+    [X | Xs] -> (let H (if (or (empty? X) (cons? X)) 
+                           (flatten X) 
+                           [X])
                     (append H (flatten Xs))))
 
-\\ eliminate consecutive duplicates of list elements
+\\ 08 -- eliminate consecutive duplicates of list elements
 (define compress
-    [] -> []
-    [X | []] -> [X]
+    Xs -> Xs where (or (empty? Xs) (empty? (tail Xs)))
     [X X | Xs] -> (compress [X | Xs])
     [X Y | Xs] -> [X | (compress [Y | Xs])])
+
+\\ 09 -- pack consecutive duplicates of list elements into sublists
+(define skip
+    N Xs -> Xs where (or (<= N 0) (empty? Xs))
+    N [X | Xs] -> (if (= N 1)
+                      Xs
+                      (skip (- N 1) Xs)))
+
+(define group
+    Xs -> Xs where (or (empty? Xs) (empty? (tail Xs)))
+    [X X | Xs] -> [X | (group [X | Xs])]
+    [X Y | Xs] -> [X])
+
+(define pack
+    [] -> []
+    [X] -> [[X]]
+    Xs -> (let G (group Xs)
+            [G | (pack (skip (length G) Xs))]))
+
+\\ 10 -- run-length encoding of a list
+(define encode
+    Xs -> (map (/. P (let H (head P)
+                          L (length P)
+                        [L | [H]]))
+            (pack Xs)))
+
+\\ 11 -- modified run-length encoding
+(define encode-modified
+    Xs -> (map (/. P (let H (head P)
+                          L (length P)
+                        (if (= L 1) H [L | [H]])))
+               (pack Xs)))
+
+\\ 12 -- decode a run-length encoded list
+(define dup
+    1 X -> [X]
+    N X -> X where (<= N 0)
+    N X -> [X | (dup (- N 1) X)])
+
+(define decode
+    [] -> []
+    [X | Xs] -> (let Y (if (cons? X)
+                           (dup (head X) (last X))
+                           [X])
+                    (append Y (decode Xs))))
