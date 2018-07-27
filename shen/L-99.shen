@@ -11,17 +11,18 @@
                     (last Xs)))
 
 \\ 02 -- find the last but one box of a list
-(define but-last
+\\ TBD: shouldn't it return one element instead?
+(define penult
     Xs -> Xs where (or (empty? Xs) (empty? (tail Xs)))
     [X Y | Xs] -> (if (empty? Xs) 
                       [X Y]
-                      (but-last [Y | Xs])))
+                      (penult [Y | Xs])))
 
 \\ 03 -- find the K'th element of a list
-(define kth
+(define pick
     K Xs -> [] where (or (empty? Xs) (<= K 0))
     K [X | Xs] -> (if (> K 1) 
-                      (kth (- K 1) Xs) 
+                      (pick (- K 1) Xs) 
                       X))
 
 \\ 04 -- find the number of elements of a list
@@ -30,6 +31,7 @@
     [X | Xs] -> (+ 1 (length? Xs)))
 
 \\ 05 -- reverse a list
+\\ TBD: 'reverse' clashes with native function
 (define flip
     [] -> []
     [X | Xs] -> (append (flip Xs) [X]))
@@ -58,6 +60,7 @@
                       Xs
                       (skip (- N 1) Xs)))
 
+\\ TBD: encapsulate somehow?
 (define group
     Xs -> Xs where (or (empty? Xs) (empty? (tail Xs)))
     [X X | Xs] -> [X | (group [X | Xs])]
@@ -77,7 +80,7 @@
             (pack Xs)))
 
 \\ 11 -- modified run-length encoding
-(define encode-modified
+(define encode/modified
     Xs -> (map (/. P (let H (head P)
                           L (length P)
                         (if (= L 1) H [L | [H]])))
