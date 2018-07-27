@@ -1,6 +1,6 @@
 \* 99 Lisp problems in Shen
  * https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html
- * in case usage of native functions is cheating, we've rolled out or own in ./base.shen file
+ * in case usage of native functions is cheating, we've rolled out our own in ./base.shen file
  *\
 
 \\ 01 -- find the last box of a list
