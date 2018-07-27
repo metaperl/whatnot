@@ -26,6 +26,7 @@
                       X))
 
 \\ 04 -- find the number of elements of a list
+\\ TBD: 'length' clashes with native function
 (define length?
     [] -> 0
     [X | Xs] -> (+ 1 (length? Xs)))
