@@ -1,7 +1,8 @@
 Red [
-    Title:  "Palette of Red's built-in colors"
+    Title:  "Palette of built-in colors"
     File:   %palette.red
     Author: 9214
+    Date:   27-Dec-2017
     Needs:  View
 ]
 
