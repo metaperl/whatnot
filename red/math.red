@@ -4,10 +4,10 @@ Red [
     Date:   12-Nov-18
 ]
 
+
 math: function [
     "Evaluates a block using math precedence rules, returning the last result."
     expression [block!] "Block to evaluate."
-    /only "Apply precedence rules only to numeric expressions."
     /local match
 ][
     table: [
@@ -16,7 +16,7 @@ math: function [
         ['+ | '-]
     ]
 
-    term:   compose [(pick [number! scalar!] only) | paren!]
+    term:   [any-word! | any-path! | scalar! | paren!]
     binary: [term operator term]
     wrap:   [change copy match binary (do match)]
 
