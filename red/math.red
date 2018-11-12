@@ -18,7 +18,7 @@ math: function [
 
     term:   compose [(pick [number! scalar!] only) | paren!]
     binary: [term operator term]
-    wrap:   [change only copy match binary (to paren! match)]
+    wrap:   [change copy match binary (do match)]
 
     expression: copy/deep expression
     do also expression foreach operator table [
