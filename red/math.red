@@ -4,7 +4,6 @@ Red [
     Date:   12-Nov-18
 ]
 
-
 math: function [
     "Evaluates a block using math precedence rules, returning the last result."
     expression [block!] "Block to evaluate."
