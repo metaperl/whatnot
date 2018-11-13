@@ -24,8 +24,8 @@ math: function [
         parse expression rule: [
             any [
                 if (operator = '**) ahead [term operator rule] [fail]           ; not general enough
-                | ahead paren! into rule wrap
-                | some [ahead wrap] skip
+                | ahead paren! into rule [fail]
+                | some [ahead wrap] [fail]
                 | skip
             ]
         ]
