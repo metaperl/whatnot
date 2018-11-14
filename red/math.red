@@ -23,7 +23,7 @@ math: function [
     do also expression foreach operator table [
         parse expression rule: [
             any [
-                if (operator = '**) ahead [term operator rule] [fail]           ; not general enough
+                if (operator = '**) term operator rule [fail]           ; not general enough
                 | ahead paren! into rule [fail]
                 | some [ahead wrap] [fail]
                 | skip
