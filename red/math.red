@@ -6,7 +6,7 @@ Red [
 
 math: function [
     "Evaluates a block using math precedence rules, returning the last result."
-    expression [block!] "Block to evaluate."
+    body [block!] "Block to evaluate."
     /local match
 ][
     table: [
@@ -19,11 +19,11 @@ math: function [
     binary: [term operator term]
     wrap:   [change copy match binary (do match)]
 
-    expression: copy/deep expression
-    do also expression foreach operator table [
-        parse expression rule: [
+    body: copy/deep body
+    do also body foreach operator table [
+        parse body rule: [
             any [
-                if (operator = '**) term operator rule [fail]           ; not general enough
+                if (operator = '**) term operator rule [fail] 
                 | ahead paren! into rule [fail]
                 | some [ahead wrap] [fail]
                 | skip
