@@ -5,8 +5,7 @@ Red [
 ]
 
 memoize: func [
-    "Creates a memoized version of a function."
-    function [any-function!] "Function to memoize."
+    function
     /local
         arguments
         domain
@@ -46,7 +45,7 @@ memoize: func [
 
         memory: make block! 16
         recall: func [entry][
-            select/only/same/case/skip memory entry 2
+            probe select/only/case/skip memory reduce entry 2 				;@@ use SAME?
         ]
         remember: func [key value][
             last append memory reduce [reduce key value]        
