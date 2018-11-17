@@ -25,10 +25,6 @@ memoize: func [
         ]
     ]
 
-    foreach block [domain arguments][
-        new-line/all get block off
-    ]
-
     cache: context [
         base: :function
         restore: func [domain /local value][
@@ -45,17 +41,17 @@ memoize: func [
 
         memory: make block! 16
         recall: func [entry][
-            probe select/only/case/skip memory reduce entry 2 				;@@ use SAME?
+            select/only/case/skip memory reduce entry 2
         ]
         remember: func [key value][
             last append memory reduce [reduce key value]        
         ]
 
-        result: dummy: none
+        result: leftover: none
         apply: func [function arguments][
             do/next compose [
                 (function) (fix arguments)
-            ] 'dummy      
+            ] 'leftover
         ]
         fix: func [arguments /local quotes result][
             quotes: [get-word! get-path! paren!]
