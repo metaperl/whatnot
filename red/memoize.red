@@ -32,26 +32,22 @@ memoize: func [
                 keep 'base
                 forall domain [
                     value: attempt [get/any domain/1]
-                    if all [logic? value value][
-                        keep domain/1
-                    ]
+                    all [logic? value value keep domain/1]
                 ]
             ]
         ]
 
-        memory: make block! 16
+        memory: make block! 32
         recall: func [entry][
             select/only/case/skip memory reduce entry 2
         ]
         remember: func [key value][
-            last append memory reduce [reduce key value]        
+            last repend memory [reduce key value]        
         ]
 
         result: leftover: none
         apply: func [function arguments][
-            do/next compose [
-                (function) (fix arguments)
-            ] 'leftover
+            do/next compose [(function) (arguments)] 'leftover
         ]
         fix: func [arguments /local quotes result][
             quotes: [get-word! get-path! paren!]
@@ -72,7 +68,7 @@ memoize: func [
     body: compose/deep/only bind [
         any [
             recall (domain)          
-            remember (domain) apply restore (domain) (arguments)
+            remember (domain) apply restore (domain) fix (arguments)
         ]
     ] cache
 
