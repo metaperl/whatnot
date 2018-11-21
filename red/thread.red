@@ -3,9 +3,9 @@ Red [
 ]
 
 thread: func [body /local .][
-    bind body '.
+    body: bind copy body '.
     get/any also '. until [
-        set/any '. do/next body 'body
+        change any [find body '. body] set/any '. do/next body 'body
         empty? body
     ]
 ]
