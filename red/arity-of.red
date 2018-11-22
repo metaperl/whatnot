@@ -1,5 +1,5 @@
 Red [
-	Title:  "Arity of functions."
+	Title:  "Arity of a function."
 	Author: 9214
 	Date:   27-Jan-2018
 ]
@@ -9,12 +9,8 @@ arity-of: function [
     /local match
 ][  
     clean: [
-        start: 
-        any [remove [not [any-word! | refinement!] skip] | skip] 
-        :start (
-            remove find/same spec quote return:
-            table: make map! length? spec
-        )
+        any [remove [quote return: | not [any-word! | refinement!] skip] | skip] [fail] 
+        | (table: make map! length? spec)
     ]
 
     main: [copy match any any-word! (table/0: length? match)]
